@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaStudio | Diseño Digital</title>
+
+    <meta name="description"
+          content="NovaStudio - Diseño web, desarrollo y soluciones digitales modernas.">
+
+    <style>
+        /* =====================================================
+           VARIABLES
+        ===================================================== */
+
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #a855f7;
+            --secondary: #06b6d4;
+            --dark: #0f172a;
+            --dark-2: #1e293b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --border: #e2e8f0;
+
+            --gradient:
+                linear-gradient(135deg, #7c3aed, #06b6d4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        body.dark {
+            --light: #020617;
+            --white: #0f172a;
+            --dark: #f8fafc;
+            --dark-2: #1e293b;
+            --gray: #94a3b8;
+            --border: #334155;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        body.dark header {
+            background: rgba(2,6,23,0.85);
+        }
+
+        .navbar {
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-btn,
+        .menu-btn {
+            border: none;
+            background: var(--dark-2);
+            color: white;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+            cursor: pointer;
+
+            font-size: 18px;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 25px;
+
+            border-radius: 10px;
+            border: none;
+
+            font-weight: 700;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+
+            box-shadow:
+                0 10px 30px rgba(124,58,237,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 35px rgba(124,58,237,0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding-top: 100px;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(124,58,237,0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(6,182,212,0.15),
+                    transparent 30%
+                );
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 50px;
+
+            background: rgba(124,58,237,0.1);
+            color: var(--primary);
+
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+
+            max-width: 600px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard {
+            padding: 25px;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 30px 80px rgba(15,23,42,0.15);
+
+            transform: rotate(2deg);
+            transition: 0.5s;
+        }
+
+        .dashboard:hover {
+            transform: rotate(0deg) translateY(-10px);
+        }
+
+        .dashboard-top {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ef4444;
+        }
+
+        .yellow {
+            background: #f59e0b;
+        }
+
+        .green {
+            background: #22c55e;
+        }
+
+        .chart {
+            height: 230px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.15),
+                    rgba(6,182,212,0.1)
+                );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-line {
+            position: absolute;
+
+            width: 140%;
+            height: 100px;
+
+            border-top: 5px solid var(--primary);
+
+            transform:
+                rotate(-10deg)
+                translate(-20px, 100px);
+
+            border-radius: 50%;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+        .stat {
+            padding: 15px;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.3rem;
+        }
+
+        .stat span {
+            color: var(--gray);
+            font-size: .85rem;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ===================================================== */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--gray);
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .service-card {
+            padding: 35px;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            transition: 0.3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: var(--gradient);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 20px 50px rgba(15,23,42,0.12);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,.15),
+                    rgba(6,182,212,.15)
+                );
+
+            border-radius: 15px;
+
+            font-size: 28px;
+
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about {
+            background: var(--dark-2);
+            color: white;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .about-image {
+            height: 450px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #06b6d4
+                );
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: "NOVA";
+
+            position: absolute;
+
+            font-size: 8rem;
+            font-weight: 900;
+
+            color: rgba(255,255,255,.1);
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%)
+                rotate(-15deg);
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .check-list li {
+            margin: 15px 0;
+            color: #e2e8f0;
+        }
+
+        .check-list li::first-letter {
+            color: #22c55e;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 25px;
+        }
+
+        .project {
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            transition: .3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            height: 230px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #06b6d4
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+
+        .project:nth-child(2) .project-image {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #334155
+                );
+        }
+
+        .project:nth-child(3) .project-image {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ec4899,
+                    #8b5cf6
+                );
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--gray);
+        }
+
+
+        /* =====================================================
+           TESTIMONIALS
+        ===================================================== */
+
+        .testimonials {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,.08),
+                    rgba(6,182,212,.08)
+                );
+        }
+
+        .testimonial-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: var(--white);
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border);
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-container {
+            display: grid;
+
+            grid-template-columns:
+                .8fr 1.2fr;
+
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-item span {
+            color: var(--gray);
+        }
+
+        form {
+            background: var(--white);
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 20px 60px rgba(15,23,42,.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid var(--border);
+
+            background: var(--light);
+            color: var(--dark);
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            transition: .3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+
+            box-shadow:
+                0 0 0 3px rgba(124,58,237,.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        form .btn {
+            width: 100%;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #020617;
+            color: white;
+
+            padding: 60px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 40px;
+
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            color: transparent;
+
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #94a3b8;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer li {
+            margin: 10px 0;
+            color: #94a3b8;
+        }
+
+        footer li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            padding-top: 25px;
+
+            border-top:
+                1px solid #1e293b;
+
+            text-align: center;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .dashboard {
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+
+                top: 75px;
+                left: 0;
+
+                width: 100%;
+
+                padding: 25px;
+
+                background: var(--white);
+
+                flex-direction: column;
+
+                display: none;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-content,
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .projects-grid,
+            .testimonial-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .services-grid,
+            .projects-grid,
+            .testimonial-grid,
+            .footer-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-content h2 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <div class="container navbar">
+
+            <a href="#" class="logo">
+                NovaStudio
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+
+            </nav>
+
+            <div class="nav-buttons">
+
+                <button
+                    class="theme-btn"
+                    id="themeBtn"
+                    title="Cambiar tema">
+                    🌙
+                </button>
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    title="Abrir menú">
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="container hero-content">
+
+                <div class="hero-text fade-in">
+
+                    <span class="badge">
+                        ✨ Creamos experiencias digitales
+                    </span>
+
+                    <h1>
+                        Diseñamos el
+                        <span class="gradient-text">
+                            futuro digital
+                        </span>
+                    </h1>
+
+                    <p>
+                        Transformamos ideas en experiencias digitales
+                        modernas, rápidas y memorables. Diseño, tecnología
+                        y creatividad trabajando juntos.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#contacto"
+                            class="btn btn-primary">
+                            Empezar proyecto →
+                        </a>
+
+                        <a
+                            href="#proyectos"
+                            class="btn btn-outline">
+                            Ver proyectos
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual fade-in">
+
+                    <div class="dashboard">
+
+                        <div class="dashboard-top">
+
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+
+                        </div>
+
+                        <div class="chart">
+
+                            <div class="chart-line"></div>
+
+                        </div>
+
+                        <div class="stats">
+
+                            <div class="stat">
+                                <strong>+240%</strong>
+                                <span>Crecimiento</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>98%</strong>
+                                <span>Satisfacción</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>120+</strong>
+                                <span>Proyectos</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SERVICES
+        ================================================== -->
+
+        <section id="servicios">
+
+            <div class="container">
+
+                <div class="section-title fade-in">
+
+                    <span>LO QUE HACEMOS</span>
+
+                    <h2>
+                        Soluciones para hacer crecer tu proyecto
+                    </h2>
+
+                    <p>
+                        Combinamos estrategia, diseño y tecnología para
+                        crear productos digitales que realmente funcionan.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">💻</div>
+
+                        <h3>Diseño Web</h3>
+
+                        <p>
+                            Creamos sitios web modernos, atractivos,
+                            rápidos y adaptados a cualquier dispositivo.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">📱</div>
+
+                        <h3>Apps Móviles</h3>
+
+                        <p>
+                            Diseñamos experiencias móviles intuitivas
+                            para Android, iOS y aplicaciones híbridas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">🚀</div>
+
+                        <h3>Marketing Digital</h3>
+
+                        <p>
+                            Estrategias digitales para aumentar tu
+                            visibilidad, clientes y conversiones.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">🎨</div>
+
+                        <h3>Branding</h3>
+
+                        <p>
+                            Construimos identidades visuales únicas que
+                            hacen que tu marca sea reconocible.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">⚙️</div>
+
+                        <h3>Desarrollo</h3>
+
+                        <p>
+                            Construimos soluciones web escalables,
+                            seguras y preparadas para crecer.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card fade-in">
+
+                        <div class="icon">📊</div>
+
+                        <h3>Analítica</h3>
+
+                        <p>
+                            Convertimos datos en información útil para
+                            tomar mejores decisiones.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section class="about" id="nosotros">
+
+            <div class="container about-grid">
+
+                <div class="about-image fade-in"></div>
+
+                <div class="about-content fade-in">
+
+                    <span>¿QUIÉNES SOMOS?</span>
+
+                    <h2>
+                        Tecnología con propósito.
+                    </h2>
+
+                    <p>
+                        En NovaStudio creemos que una buena experiencia
+                        digital puede cambiar la forma en que las personas
+                        interactúan con una marca.
+                    </p>
+
+                    <p>
+                        Nuestro equipo combina creatividad, diseño y
+                        desarrollo para construir productos que no solo
+                        se ven bien, sino que también generan resultados.
+                    </p>
+
+                    <ul class="check-list">
+
+                        <li>✓ Diseño centrado en el usuario</li>
+                        <li>✓ Tecnología moderna</li>
+                        <li>✓ Código limpio y escalable</li>
+                        <li>✓ Comunicación transparente</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROJECTS
+        ================================================== -->
+
+        <section id="proyectos">
+
+            <div class="container">
+
+                <div class="section-title fade-in">
+
+                    <span>NUESTRO TRABAJO</span>
+
+                    <h2>
+                        Proyectos destacados
+                    </h2>
+
+                    <p>
+                        Algunos ejemplos de lo que podemos construir.
+                    </p>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+                    <article class="project fade-in">
+
+                        <div class="project-image">
+                            APP
+                        </div>
+
+                        <div class="project-info">
+
+                            <h3>
+                                Fintech App
+                            </h3>
+
+                            <p>
+                                Plataforma financiera moderna para
+                                gestionar pagos y operaciones.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="project fade-in">
+
+                        <div class="project-image">
+                            SHOP
+                        </div>
+
+                        <div class="project-info">
+
+                            <h3>
+                                E-commerce
+                            </h3>
+
+                            <p>
+                                Tienda online optimizada para aumentar
+                                conversiones y ventas.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="project fade-in">
+
+                        <div class="project-image">
+                            AI
+                        </div>
+
+                        <div class="project-info">
+
+                            <h3>
+                                Plataforma AI
+                            </h3>
+
+                            <p>
+                                Dashboard inteligente para visualizar
+                                datos y automatizar procesos.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TESTIMONIALS
+        ================================================== -->
+
+        <section class="testimonials">
+
+            <div class="container">
+
+                <div class="section-title fade-in">
+
+                    <span>TESTIMONIOS</span>
+
+                    <h2>
+                        Lo que dicen nuestros clientes
+                    </h2>
+
+                </div>
+
+
+                <div class="testimonial-grid">
+
+                    <article class="testimonial fade-in">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "El equipo entendió nuestra idea desde el
+                            primer momento y consiguió convertirla en
+                            una experiencia increíble."
+                        </p>
+
+                        <div class="author">
+
+                            <div class="avatar">
+                                MC
+                            </div>
+
+                            <div>
+                                <strong>
+                                    María C.
+                                </strong>
+
+                                <small>
+                                    CEO, TechCompany
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial fade-in">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Nuestra nueva página no solo se ve mejor,
+                            también conseguimos muchos más clientes."
+                        </p>
+
+                        <div class="author">
+
+                            <div class="avatar">
+                                JR
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Juan R.
+                                </strong>
+
+                                <small>
+                                    Fundador, Startup
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial fade-in">
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Profesionales, rápidos y con una atención
+                            excelente. Definitivamente volveríamos
+                            a trabajar con ellos."
+                        </p>
+
+                        <div class="author">
+
+                            <div class="avatar">
+                                AL
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Ana L.
+                                </strong>
+
+                                <small>
+                                    Directora de Marketing
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section id="contacto">
+
+            <div class="container contact-container">
+
+                <div class="contact-info fade-in">
+
+                    <span>HABLEMOS</span>
+
+                    <h2>
+                        ¿Tienes un proyecto en mente?
+                    </h2>
+
+                    <p>
+                        Cuéntanos tu idea y te ayudaremos a convertirla
+                        en una experiencia digital increíble.
+                    </p>
+
+                    <div class="contact-item">
+
+                        <strong>📧 Email</strong>
+
+                        <span>
+                            hola@novastudio.com
+                        </span>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <strong>📍 Ubicación</strong>
+
+                        <span>
+                            Colombia
+                        </span>
+
+                    </div>
+
+                    <div class="contact-item">
+
+                        <strong>🕐 Horario</strong>
+
+                        <span>
+                            Lunes - Viernes / 8:00 - 18:00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <form
+                    id="contactForm"
+                    class="fade-in">
+
+                    <div class="form-row">
+
+                        <div class="input-group">
+
+                            <label for="name">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Tu nombre"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="email">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="tu@email.com"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="subject">
+                            Asunto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="¿En qué podemos ayudarte?"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="message">
+                            Mensaje
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Cuéntanos sobre tu proyecto..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        Enviar mensaje 🚀
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="footer-logo">
+                        NovaStudio
+                    </div>
+
+                    <p>
+                        Creamos experiencias digitales que conectan
+                        marcas con personas.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Empresa
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="#nosotros">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#proyectos">
+                                Proyectos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#contacto">
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Servicios
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Diseño Web
+                        </li>
+
+                        <li>
+                            Desarrollo
+                        </li>
+
+                        <li>
+                            Branding
+                        </li>
+
+                        <li>
+                            Marketing
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Síguenos
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Instagram
+                        </li>
+
+                        <li>
+                            Facebook
+                        </li>
+
+                        <li>
+                            LinkedIn
+                        </li>
+
+                        <li>
+                            X / Twitter
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 NovaStudio.
+                Todos los derechos reservados.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* ================================
+           MENÚ MÓVIL
+        ================================= */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+                menuBtn.textContent = "✕";
+            } else {
+                menuBtn.textContent = "☰";
+            }
+
+        });
+
+
+        /* ================================
+           CERRAR MENÚ AL HACER CLICK
+        ================================= */
+
+        document.querySelectorAll(".nav-links a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navLinks.classList.remove("active");
+
+                    menuBtn.textContent = "☰";
+
+                });
+
+            });
+
+
+        /* ================================
+           MODO OSCURO
+        ================================= */
+
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", () => {
+
+            document.body.classList.toggle("dark");
+
+            if (
+                document.body.classList.contains("dark")
+            ) {
+                themeBtn.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                themeBtn.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+
+        });
+
+
+        /* ================================
+           RECORDAR TEMA
+        ================================= */
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark");
+
+            themeBtn.textContent = "☀️";
+
+        }
+
+
+        /* ================================
+           ANIMACIONES AL HACER SCROLL
+        ================================= */
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+        document
+            .querySelectorAll(".fade-in")
+            .forEach(element => {
+
+                observer.observe(element);
+
+            });
+
+
+        /* ================================
+           FORMULARIO
+        ================================= */
+
+        const form =
+            document.getElementById("contactForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value;
+
+            alert(
+                "¡Gracias, " +
+                name +
+                "! Hemos recibido tu mensaje."
+            );
+
+            form.reset();
+
+        });
+
+
+        /* ================================
+           EFECTO SUAVE PARA BOTONES
+        ================================= */
+
+        document
+            .querySelectorAll(".btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "mouseenter",
+                    () => {
+                        button.style.transform =
+                            "translateY(-2px)";
+                    }
+                );
+
+                button.addEventListener(
+                    "mouseleave",
+                    () => {
+                        button.style.transform =
+                            "";
+                    }
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>
